@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318202013) do
+ActiveRecord::Schema.define(version: 20170318224859) do
+
+  create_table "teachers", force: :cascade do |t|
+    t.string   "phone"
+    t.string   "image_url"
+    t.boolean  "verify_bgd_check"
+    t.boolean  "complete_exam"
+    t.text     "about_me"
+    t.string   "address"
+    t.boolean  "verify_phone"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
