@@ -19,7 +19,6 @@
                   <div class="panel-body">
                     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                       <div class="form-group">
-                        <label  for="username">Username</label>
                         <%= f.label :email, class: "control-label" %><br />
                         <%= f.email_field :email, autofocus: true, class: "form-control", title: "Please enter you username", placeholder: "example@gmail.com" %>
                         <span class="help-block small">Your unique username to app</span>
