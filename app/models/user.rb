@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :teachers
+
   enum role: [ :user, :teacher ]
 
   before_create :set_default_role

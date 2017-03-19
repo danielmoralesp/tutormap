@@ -12,6 +12,7 @@ class TeachersController < ApplicationController
 
   def create
     @teacher = Teacher.new(teacher_params)
+    @teacher.user = current_user
 
     if @teacher.save
       flash[:notice] = 'El profesor ha sido creado con éxito'
