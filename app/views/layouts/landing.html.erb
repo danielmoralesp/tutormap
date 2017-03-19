@@ -5,6 +5,21 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <!-- Vendor styles -->
+  <link rel="stylesheet" href="/assets/metisMenu.css" />
+  <link rel="stylesheet" href="/assets/animate.css" />
+  <link rel="stylesheet" href="/assets/bootstrap.css" />
+  <link rel="stylesheet" href="/assets/sweet-alert.css" />
+
+  <!-- App styles -->
+  <link rel="stylesheet" href="/assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+  <link rel="stylesheet" href="/assets/pe-icon-7-stroke/css/helper.css" />
+  <link rel="stylesheet" href="/assets/style.css">
+
+
+
+
 </head>
 
 
@@ -13,4 +28,19 @@
     $(".alert").fadeIn(500).css("opacity","0.85").delay( 6000 ).slideUp( 1000 );
     $('.alerts').on('click','.alert',function(){ $(this).remove() });
   </script>
+
+  <!-- Vendor scripts -->
+  <script src="/assets/jquery.min.js"></script>
+  <script src="/assets/jquery-ui.min.js"></script>
+  <script src="/assets/jquery.slimscroll.min.js"></script>
+  <script src="/assets/bootstrap.min.js"></script>
+  <script src="/assets/metisMenu.min.js"></script>
+  <script src="/assets/icheck.min.js"></script>
+  <script src="/assets/index.js"></script>
+  <script src="/assets/sweet-alert.min.js"></script>
+
+  <!-- App scripts -->
+  <script src="/assets/homer.js"></script>
+
+
 </html>
