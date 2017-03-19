@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   resources :teachers
 
+  get 'landing', to: 'teachers#landing', as: 'teachers_landing'
+
 
 end

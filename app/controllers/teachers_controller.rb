@@ -1,5 +1,9 @@
 class TeachersController < ApplicationController
-  before_action :authenticate_user!, except: [ :show, :index ]
+  before_action :authenticate_user!, except: [ :landing, :index, :show ]
+
+  def landing
+    render :layout => 'landing'
+  end
 
   def index
     @teachers = Teacher.all
