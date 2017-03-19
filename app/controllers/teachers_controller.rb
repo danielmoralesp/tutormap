@@ -3,6 +3,7 @@ class TeachersController < ApplicationController
 
   def index
     @teachers = Teacher.all
+    render :layout => 'landing'
   end
 
   def new
@@ -22,15 +23,27 @@ class TeachersController < ApplicationController
   end
 
   def edit
-
+    @teacher = Teacher.find(params[:id])
   end
 
   def update
+    @teacher = Teacher.find(params[:id])
 
+    if @teacher.update(teacher_params)
+      flash[:notice] = 'El profesor ha sido actualizado con éxito'
+      redirect_to teachers_path
+    else
+      flash[:alert] = 'Algo fallo, el profesor no ha sido actualizado con éxito'
+      render :edit
+    end
   end
 
   def destroy
+    @teacher = Teacher.find(params[:id])
 
+    @teacher.destroy
+    flash[:notice] = 'El profesor ha sido eliminado con éxito'
+    redirect_to teachers_path
   end
 
   private
