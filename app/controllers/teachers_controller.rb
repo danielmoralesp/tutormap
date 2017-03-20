@@ -10,6 +10,10 @@ class TeachersController < ApplicationController
     render :layout => 'landing'
   end
 
+  def show
+    @teacher = Teacher.find(params[:id])
+  end
+
   def new
     @teacher = Teacher.new
   end
