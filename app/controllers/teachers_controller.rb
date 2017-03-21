@@ -12,6 +12,9 @@ class TeachersController < ApplicationController
 
   def show
     @teacher = Teacher.find(params[:id])
+    @tutorings = @teacher.tutorings
+    @tutoring = Tutoring.new
+
   end
 
   def new
@@ -57,7 +60,7 @@ class TeachersController < ApplicationController
 
   private
     def teacher_params
-      params.require(:teacher).permit(:phone, :image_url, :verify_bgd_check, :complete_exam, :about_me, :address, :verify_phone)
+      params.require(:teacher).permit(:phone, :image_url, :verify_bgd_check, :complete_exam, :about_me, :address, :verify_phone, :user_id)
     end
 
 end

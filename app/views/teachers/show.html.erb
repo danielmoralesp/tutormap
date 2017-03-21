@@ -36,7 +36,7 @@
 <div class="content animate-panel">
 
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-md-4">
         <div class="hpanel hgreen">
             <div class="panel-body">
                 <div class="pull-right text-right">
@@ -52,9 +52,41 @@
                 <p>
                     <%= @teacher.about_me %>
                 </p>
-                <div class="progress m-t-xs full progress-small">
-                    <div style="width: 65%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="65" role="progressbar" class=" progress-bar progress-bar-success">
-                        <span class="sr-only">35% Complete (success)</span>
+                <div class="text-center">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                        Solicitar Tutoria
+                    </button>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="color-line"></div>
+                                <div class="modal-header text-center">
+                                    <h4 class="modal-title">Modal title</h4>
+                                    <small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
+                                </div>
+                                <div class="modal-body">
+                                  <%= form_for @tutoring, :html => {:class => 'form-horizontal'} do |f| %>
+                                      <div class="form-group">
+                                        <div class="col-sm-12">
+                                          <%= f.text_field :place, class: "form-control m-b", placeholder: 'Direccion para la Tutoria' %>
+                                        </div>
+                                        <div class="col-sm-12">
+                                          <%= f.text_field :num_hours, class: "form-control m-b", placeholder: 'Numero de Horas'  %>
+                                        </div>
+                                        <div class="col-sm-12">
+                                          <%= f.text_field :hour, class: "form-control m-b", placeholder: 'Hora de la tutoria' %>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <%= f.hidden_field :user_id, value: current_user.id %>
+                                    <%= f.hidden_field :teacher_id, value: @teacher.id %>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <%= f.submit "Solicitar", class: 'btn btn-primary' %>
+                                </div>
+                                <% end %>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -90,13 +122,16 @@
 
         </div>
     </div>
-    <div class="col-lg-8">
+    <div class="col-md-8">
         <div class="hpanel">
             <div class="hpanel">
 
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#tab-1">Project</a></li>
                 <li class=""><a data-toggle="tab" href="#tab-2">Messages</a></li>
+                <% if user_signed_in? && @teacher.teacher? && @teacher.user == current_user %>
+                  <li class=""><a data-toggle="tab" href="#tab-3">Mis Tutorias</a></li>
+                <% end %>
             </ul>
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane active">
@@ -403,6 +438,36 @@
 
                     </div>
                 </div>
+                <% if user_signed_in? && @teacher.teacher? && @teacher.user == current_user %>
+                <div id="tab-3" class="tab-pane">
+                    <div class="panel-body no-padding">
+
+
+                        <div class="chat-discussion" style="height: auto">
+
+                            <div class="chat-message">
+                              <% @tutorings.each do |tutoring| %>
+                                <img class="message-avatar" src="/assets/a1.jpg" alt="" >
+                                <div class="message">
+                                    <a class="message-author" href="#"> <%= tutoring.user.name %> </a>
+                                    <span class="message-date"> <%= tutoring.created_at %> </span>
+                                            <span class="message-content">
+											                        <%= tutoring.place %>, <%= tutoring.num_hours %>, <%= tutoring.hour %>
+                                            </span>
+
+                                    <div class="m-t-md">
+                                        <a class="btn btn-xs btn-default"><i class="fa fa-thumbs-up"></i> Like </a>
+                                        <a class="btn btn-xs btn-success"><i class="fa fa-heart"></i> Love</a>
+                                    </div>
+                                </div>
+                                <% end %>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <% end %>
             </div>
 
 
