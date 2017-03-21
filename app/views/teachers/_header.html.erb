@@ -18,7 +18,7 @@
                   <li><%= link_to 'Solicitar Tutoria', new_tutoring_path, class: "page-scroll" %></li>
                   <li><%= link_to 'Listado Profesores', teachers_path, class: "page-scroll"  %></li>
                     <% if user_signed_in? %>
-                      <li><a class="page-scroll" page-scroll href="#features"><%= current_user.name %></a></li>
+                      <li><%= link_to current_user.name, current_user, class: "page-scroll" %></li> 
                       <li><%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: "page-scroll" %></li>
                     <% else %>
                       <li><%= link_to 'Iniciar Sesión', new_user_session_path, class: "page-scroll" %></li>
