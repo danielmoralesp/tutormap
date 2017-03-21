@@ -1,6 +1,8 @@
 class Teacher < ActiveRecord::Base
 
   belongs_to :user
+  has_many :tutorings
+  has_many :users, through: :tutorings
 
   validates :phone, :address, :about_me, presence: true
   validates :about_me, length: { in: 50...500 }

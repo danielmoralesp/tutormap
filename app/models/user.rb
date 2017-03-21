@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :teachers
+  has_many :tutorings
+  has_many :teachers, through: :tutorings
 
   enum role: [ :user, :teacher ]
 
