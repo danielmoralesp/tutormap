@@ -1,5 +1,6 @@
 class TeachersController < ApplicationController
   before_action :authenticate_user!, except: [ :landing, :index, :show ]
+  before_filter :validate_user, only: [:edit, :update, :destroy]
 
   def landing
     render :layout => 'landing'
@@ -61,6 +62,12 @@ class TeachersController < ApplicationController
   private
     def teacher_params
       params.require(:teacher).permit(:phone, :image_url, :verify_bgd_check, :complete_exam, :about_me, :address, :verify_phone, :user_id)
+    end
+
+    def validate_user
+      @teacher = Teacher.find(params[:id])
+      redirect_to root_path unless current_user.id.to_s == @teacher.user_id.to_s
+      flash[:alert] = 'No tienes permisos para acceder a esta ruta'
     end
 
 end
