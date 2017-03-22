@@ -52,6 +52,9 @@
                 <p>
                     Sobre mi
                 </p>
+                <div class="text-center">
+                    <%= button_to "Ver Mi Perfil de Profesor", "/teachers/#{@teacher_id}", method: :get, class: "btn btn-success"  %>
+                </div>
             </div>
             <div class="border-right border-left">
                 <section id="map">

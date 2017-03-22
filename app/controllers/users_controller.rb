@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @teacher_id = Teacher.reflect_on_association(:teacher_id)
+
+    #User.reflections["teachers"].foreign_key
   end
 
   private
