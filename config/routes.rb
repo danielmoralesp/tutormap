@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :teachers
   resources :tutorings, only: [:new, :create]
   resources :users, only: [:show]
+  resources :admins, only: [:index, :show]
 
   get 'landing', to: 'teachers#landing', as: 'teachers_landing'
 

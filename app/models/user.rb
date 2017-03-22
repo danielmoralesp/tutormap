@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   has_many :tutorings
   has_many :teachers, through: :tutorings
 
-  enum role: [ :user, :teacher ]
+  enum role: [ :user, :teacher, :admin ]
 
   before_create :set_default_role
 
