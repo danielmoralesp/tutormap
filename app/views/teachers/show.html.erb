@@ -128,9 +128,6 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#tab-1">Project</a></li>
                 <li class=""><a data-toggle="tab" href="#tab-2">Messages</a></li>
-                <% if user_signed_in? && @teacher.teacher? && @teacher.user == current_user %>
-                  <li class=""><a data-toggle="tab" href="#tab-3">Mis Tutorias</a></li>
-                <% end %>
             </ul>
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane active">
@@ -437,39 +434,7 @@
 
                     </div>
                 </div>
-                <% if user_signed_in? && @teacher.teacher? && @teacher.user == current_user %>
-                <div id="tab-3" class="tab-pane">
-                    <div class="panel-body no-padding">
-
-
-                        <div class="chat-discussion" style="height: auto">
-
-                            <div class="chat-message">
-                              <% @tutorings.each do |tutoring| %>
-                                <img class="message-avatar" src="/assets/a1.jpg" alt="" >
-                                <div class="message">
-                                    <a class="message-author" href="#"> <%= tutoring.user.name %> </a>
-                                    <span class="message-date"> <%= tutoring.created_at %> </span>
-                                            <span class="message-content">
-											                        <%= tutoring.place %>, <%= tutoring.num_hours %>, <%= tutoring.hour %>
-                                            </span>
-
-                                    <div class="m-t-md">
-                                        <a class="btn btn-xs btn-default"><i class="fa fa-thumbs-up"></i> Like </a>
-                                        <a class="btn btn-xs btn-success"><i class="fa fa-heart"></i> Love</a>
-                                    </div>
-                                </div>
-                                <% end %>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                <% end %>
             </div>
-
-
             </div>
         </div>
     </div>

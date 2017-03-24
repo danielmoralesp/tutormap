@@ -29,6 +29,6 @@ class User < ActiveRecord::Base
   has_many :tutorings
   has_many :teachers, through: :tutorings
 
-  enum role: [ :estudiante, :profesor ]
+  enum role: [ :estudiante, :profesor, :admin ]
 
 end
