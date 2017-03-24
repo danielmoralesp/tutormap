@@ -61,7 +61,7 @@ class TeachersController < ApplicationController
 
   private
     def teacher_params
-      params.require(:teacher).permit(:phone, :image_url, :verify_bgd_check, :complete_exam, :about_me, :address, :verify_phone, :user_id)
+      params.require(:teacher).permit(:phone, :user_id, :image_url, :verify_bgd_check, :complete_exam, :about_me, :address, :verify_phone, :role, :calendar_id, :city_id, :experience_id, :service_id )
     end
 
     def validate_user

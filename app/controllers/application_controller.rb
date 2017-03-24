@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   before_action :add_parameters_to_user, if: :devise_controller?
 
   def add_parameters_to_user
+    devise_parameter_sanitizer.for(:sign_up) << :role
+    devise_parameter_sanitizer.for(:account_update) << :role
+    devise_parameter_sanitizer.for(:sign_up) << :city_id
+    devise_parameter_sanitizer.for(:account_update) << :city_id
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:account_update) << :name
   end

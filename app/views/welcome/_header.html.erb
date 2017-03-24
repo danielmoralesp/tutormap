@@ -23,9 +23,6 @@
                       <li><%= link_to 'Iniciar Sesión', new_user_session_path, class: "page-scroll" %></li>
                       <li><%= link_to 'Registrarse', new_user_registration_path, class: "page-scroll" %></li>
                     <% end %>
-                    <% if user_signed_in? && current_user.admin? %>
-                      <li><%= link_to "Panel", admins_path, class: "page-scroll" %></li>
-                    <% end %>
                   <li><%= link_to 'Convierte en Profesor', teachers_landing_path, class: "navbar-brand"  %></li>
               </ul>
           </div>
