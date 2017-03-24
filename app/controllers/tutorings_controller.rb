@@ -1,6 +1,6 @@
 class TutoringsController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_user?
+  before_action :is_student?
 
   def new
     @tutoring = Tutoring.new
@@ -22,8 +22,8 @@ class TutoringsController < ApplicationController
       params.require(:tutoring).permit(:place, :num_hours, :hour, :user_id, :teacher_id)
     end
 
-    def is_user?
-      unless current_user.user?
+    def is_student?
+      unless current_user.estudiante?
         flash[:alert] = 'No tienes permisos para acceder a esta ruta'
         redirect_to root_path
       end

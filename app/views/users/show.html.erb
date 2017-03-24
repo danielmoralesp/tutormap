@@ -50,7 +50,7 @@
                 <h3><a href=""><%= @user.name %></a></h3>
                 <div class="text-muted font-bold m-b-xs">California, LA</div>
                 <p>
-                    Sobre mi
+                    Sobre mi otra vez
                 </p>
             </div>
             <div class="border-right border-left">
@@ -92,6 +92,9 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#tab-1">Project</a></li>
                 <li class=""><a data-toggle="tab" href="#tab-2">Messages</a></li>
+                <% if user_signed_in? && current_user.profesor? && @user == current_user %>
+                  <li class=""><a data-toggle="tab" href="#tab-3">Mis Tutorias</a></li>
+                <% end %>
             </ul>
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane active">
@@ -398,6 +401,36 @@
 
                     </div>
                 </div>
+                <% if user_signed_in? && current_user.profesor? && @user == current_user %>
+                <div id="tab-3" class="tab-pane">
+                    <div class="panel-body no-padding">
+
+
+                        <div class="chat-discussion" style="height: auto">
+
+                            <div class="chat-message">
+                              <% @tutorings.each do |tutoring| %>
+                                <img class="message-avatar" src="/assets/a1.jpg" alt="" >
+                                <div class="message">
+                                    <a class="message-author" href="#"> <%= tutoring.user.name %> </a>
+                                    <span class="message-date"> <%= tutoring.created_at %> </span>
+                                            <span class="message-content">
+											                        <%= tutoring.place %>, <%= tutoring.num_hours %>, <%= tutoring.hour %>
+                                            </span>
+
+                                    <div class="m-t-md">
+                                        <a class="btn btn-xs btn-default"><i class="fa fa-thumbs-up"></i> Like </a>
+                                        <a class="btn btn-xs btn-success"><i class="fa fa-heart"></i> Love</a>
+                                    </div>
+                                </div>
+                                <% end %>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <% end %>
             </div>
 
 
@@ -531,19 +564,6 @@
 
 </div>
 
-<!-- Vendor scripts -->
-<script src="vendor/jquery/dist/jquery.min.js"></script>
-<script src="vendor/jquery-ui/jquery-ui.min.js"></script>
-<script src="vendor/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="vendor/metisMenu/dist/metisMenu.min.js"></script>
-<script src="vendor/iCheck/icheck.min.js"></script>
-<script src="vendor/sparkline/index.js"></script>
-<script src="vendor/peity/jquery.peity.min.js"></script>
-
-<!-- App scripts -->
-<script src="scripts/homer.js"></script>
-<script src="scripts/charts.js"></script>
 
 <!--
  You need to include this script on any page that has a Google Map.
@@ -578,4 +598,3 @@
 
 </script>
 </body>
-</html>

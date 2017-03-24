@@ -79,7 +79,7 @@
                                       </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <%= f.hidden_field :user_id, value: current_user.id %>
+                                    <%= f.hidden_field :user_id, value: current_user %>
                                     <%= f.hidden_field :teacher_id, value: @teacher.id %>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     <%= f.submit "Solicitar", class: 'btn btn-primary' %>
@@ -599,20 +599,6 @@
     </footer>
 
 </div>
-
-<!-- Vendor scripts -->
-<script src="vendor/jquery/dist/jquery.min.js"></script>
-<script src="vendor/jquery-ui/jquery-ui.min.js"></script>
-<script src="vendor/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="vendor/metisMenu/dist/metisMenu.min.js"></script>
-<script src="vendor/iCheck/icheck.min.js"></script>
-<script src="vendor/sparkline/index.js"></script>
-<script src="vendor/peity/jquery.peity.min.js"></script>
-
-<!-- App scripts -->
-<script src="scripts/homer.js"></script>
-<script src="scripts/charts.js"></script>
 
 <!--
  You need to include this script on any page that has a Google Map.

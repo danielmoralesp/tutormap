@@ -1,5 +1,6 @@
 class TeachersController < ApplicationController
   before_action :authenticate_user!, except: [ :landing, :index, :show ]
+  before_action :is_teacher?, except: [ :landing, :index, :show ]
   before_filter :validate_user, only: [:edit, :update, :destroy]
 
   def landing
@@ -62,6 +63,13 @@ class TeachersController < ApplicationController
   private
     def teacher_params
       params.require(:teacher).permit(:phone, :user_id, :image_url, :verify_bgd_check, :complete_exam, :about_me, :address, :verify_phone, :role, :calendar_id, :city_id, :experience_id, :service_id )
+    end
+
+    def is_teacher?
+      unless current_user.profesor?
+       flash[:alert] = 'No tienes permisos para acceder a esta ruta, debes estar registrado como profesor'
+       redirect_to edit_user_registration_path
+      end
     end
 
     def validate_user
