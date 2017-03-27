@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+Country.create(name: "colombia")
+Country.create(name: "mexico")
+
+City.create(name: "medellin", country_id: Country.find_by(name: "colombia").id)
+City.create(name: "bogota", country_id: Country.find_by(name: "colombia").id)
+City.create(name: "ciudad de mexico", country_id: Country.find_by(name: "mexico").id)
+City.create(name: "guadalajara", country_id: Country.find_by(name: "mexico").id)

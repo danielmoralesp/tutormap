@@ -28,7 +28,6 @@ class User < ActiveRecord::Base
   has_many :teachers
   has_many :tutorings
   has_many :teachers, through: :tutorings
-  belongs_to :city
 
   enum role: [ :estudiante, :profesor, :admin ]
 
