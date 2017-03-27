@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327163404) do
+ActiveRecord::Schema.define(version: 20170327183047) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "cities", ["country_id"], name: "index_cities_on_country_id"
+
+  create_table "countries", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "experiences", force: :cascade do |t|
     t.string   "cargo"
@@ -38,9 +53,17 @@ ActiveRecord::Schema.define(version: 20170327163404) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "teacher_id"
+    t.integer  "topic_id"
   end
 
   add_index "services", ["teacher_id"], name: "index_services_on_teacher_id"
+  add_index "services", ["topic_id"], name: "index_services_on_topic_id"
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "teachers", force: :cascade do |t|
     t.string   "phone"
@@ -58,6 +81,15 @@ ActiveRecord::Schema.define(version: 20170327163404) do
 
   add_index "teachers", ["user_id"], name: "index_teachers_on_user_id"
 
+  create_table "topics", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "topics", ["subject_id"], name: "index_topics_on_subject_id"
+
   create_table "tutorings", force: :cascade do |t|
     t.string   "place"
     t.integer  "num_hours"
@@ -66,9 +98,13 @@ ActiveRecord::Schema.define(version: 20170327163404) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "teacher_id"
+    t.integer  "city_id"
+    t.integer  "topic_id"
   end
 
+  add_index "tutorings", ["city_id"], name: "index_tutorings_on_city_id"
   add_index "tutorings", ["teacher_id"], name: "index_tutorings_on_teacher_id"
+  add_index "tutorings", ["topic_id"], name: "index_tutorings_on_topic_id"
   add_index "tutorings", ["user_id"], name: "index_tutorings_on_user_id"
 
   create_table "users", force: :cascade do |t|
@@ -86,8 +122,10 @@ ActiveRecord::Schema.define(version: 20170327163404) do
     t.datetime "updated_at"
     t.integer  "role"
     t.string   "name"
+    t.integer  "city_id"
   end
 
+  add_index "users", ["city_id"], name: "index_users_on_city_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
