@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327191844) do
+ActiveRecord::Schema.define(version: 20170327192436) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -77,8 +77,10 @@ ActiveRecord::Schema.define(version: 20170327191844) do
     t.datetime "updated_at",       null: false
     t.integer  "role"
     t.integer  "user_id"
+    t.integer  "city_id"
   end
 
+  add_index "teachers", ["city_id"], name: "index_teachers_on_city_id"
   add_index "teachers", ["user_id"], name: "index_teachers_on_user_id"
 
   create_table "topics", force: :cascade do |t|

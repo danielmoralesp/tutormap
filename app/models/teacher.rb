@@ -1,6 +1,7 @@
 class Teacher < ActiveRecord::Base
 
   belongs_to :user
+  belongs_to :city
   has_many :tutorings
   has_many :users, through: :tutorings
   has_many :experiences
