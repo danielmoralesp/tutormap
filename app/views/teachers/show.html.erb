@@ -67,6 +67,26 @@
                                 <div class="modal-body">
                                   <%= form_for @tutoring, :html => {:class => 'form-horizontal'} do |f| %>
                                       <div class="form-group">
+                                        <%= f.label :country_id, 'Pais de Tutoria:', class: "col-sm-12" %>
+                                        <div class="col-sm-12">
+                                          <%= f.collection_select :country_id, Country.order(:name), :id, :name, include_blank: true, class: "form-control m-b" %>
+                                        </div><br><br><br>
+                                        <%= f.label :city_id, 'Ciudad de Tutoria:', class: "col-sm-12" %>
+                                        <div class="col-sm-12">
+                                          <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, include_blank: true, class: "form-control m-b" %>
+                                        </div><br><br><br>
+                                        <%= f.label :subject_id, 'Materia:', class: "col-sm-12" %>
+                                        <div class="col-sm-12">
+                                          <%= f.collection_select :subject_id, Subject.order(:name), :id, :name, include_blank: true, class: "form-control m-b" %>
+                                        </div><br><br><br>
+                                        <%= f.label :topic_id, 'Sub-Materia:', class: "col-sm-12" %>
+                                        <div class="col-sm-12">
+                                          <%= f.grouped_collection_select :topic_id, Subject.order(:name), :topics, :name, :id, :name, include_blank: true, class: "form-control m-b" %>
+                                        </div><br><br><br>
+
+                                        <br>
+
+                                        <%= f.label 'Otros Datos:', class: "col-sm-12" %>
                                         <div class="col-sm-12">
                                           <%= f.text_field :place, class: "form-control m-b", placeholder: 'Direccion para la Tutoria' %>
                                         </div>
@@ -79,7 +99,7 @@
                                       </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <%= f.hidden_field :user_id, value: current_user %>
+                                    <%= f.hidden_field :user_id, value: current_user.id %>
                                     <%= f.hidden_field :teacher_id, value: @teacher.id %>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     <%= f.submit "Solicitar", class: 'btn btn-primary' %>
