@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327194720) do
+ActiveRecord::Schema.define(version: 20170328151303) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -104,9 +104,13 @@ ActiveRecord::Schema.define(version: 20170327194720) do
     t.integer  "teacher_id"
     t.integer  "city_id"
     t.integer  "topic_id"
+    t.integer  "country_id"
+    t.integer  "subject_id"
   end
 
   add_index "tutorings", ["city_id"], name: "index_tutorings_on_city_id"
+  add_index "tutorings", ["country_id"], name: "index_tutorings_on_country_id"
+  add_index "tutorings", ["subject_id"], name: "index_tutorings_on_subject_id"
   add_index "tutorings", ["teacher_id"], name: "index_tutorings_on_teacher_id"
   add_index "tutorings", ["topic_id"], name: "index_tutorings_on_topic_id"
   add_index "tutorings", ["user_id"], name: "index_tutorings_on_user_id"

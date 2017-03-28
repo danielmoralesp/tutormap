@@ -18,7 +18,7 @@
                         <%= devise_error_messages! %>
 
                         <div class="form-group col-lg-12">
-                          <label><%= f.label 'Ciudad de Residencia' %></label>
+                          <label><%= f.label 'Eres Estudiante o Profesor?' %></label>
                           <%= f.select :role, User.roles.keys.map {|key| [key.humanize != 'Admin' ? key.humanize : {:disabled => true}, key]}, {}, {autofocus: true, class: 'form-control'}  %>
                         </div>
 

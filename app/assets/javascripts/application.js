@@ -31,3 +31,37 @@ jQuery(function() {
     }
   });
 });
+
+jQuery(function() {
+  var cities;
+  cities = $('#tutoring_city_id').html();
+  console.log(cities);
+  return $('#tutoring_country_id').change(function() {
+    var country, options;
+    country = $('#tutoring_country_id :selected').text();
+    options = $(cities).filter("optgroup[label=" + country + "]").html();
+    console.log(options);
+    if (options) {
+      return $('#tutoring_city_id').html(options);
+    } else {
+      return $('#tutoring_city_id').empty();
+    }
+  });
+});
+
+jQuery(function() {
+  var topics;
+  topics = $('#tutoring_topic_id').html();
+  console.log(topics);
+  return $('#tutoring_subject_id').change(function() {
+    var subject, options;
+    subject = $('#tutoring_subject_id :selected').text();
+    options = $(topics).filter("optgroup[label=" + subject + "]").html();
+    console.log(options);
+    if (options) {
+      return $('#tutoring_topic_id').html(options);
+    } else {
+      return $('#tutoring_topic_id').empty();
+    }
+  });
+});

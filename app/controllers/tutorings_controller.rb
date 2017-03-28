@@ -19,7 +19,7 @@ class TutoringsController < ApplicationController
 
   private
     def tutoring_params
-      params.require(:tutoring).permit(:place, :num_hours, :hour, :user_id, :teacher_id)
+      params.require(:tutoring).permit(:topic_id, :place, :calendar_id, :num_hours, :hour, :user_id, :teacher_id, :city_id, :country_id, :subject_id)
     end
 
     def is_student?
