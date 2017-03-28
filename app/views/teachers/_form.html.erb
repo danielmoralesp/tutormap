@@ -32,6 +32,17 @@
           </div>
           <div class="col-lg-9">
               <div class="row">
+
+                <div class="form-group col-lg-12">
+                  <%= f.label :country_id, 'Pais:' %>
+                  <%= f.collection_select :country_id, Country.order(:name), :id, :name, include_blank: true, class: 'form-control' %>
+                </div>
+
+                <div class="form-group col-lg-12">
+                  <%= f.label :city_id, 'Ciudad:' %>
+                  <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, include_blank: true, class: 'form-control' %>
+                </div>
+
                 <div class="form-group col-lg-12">
                   <%= f.label :phone, 'Telefono:' %>
                   <%= f.text_field :phone, required: true, class: 'form-control', placeholder: "Ingrese su numero de teléfono" %>
@@ -52,7 +63,7 @@
       </div>
 
       <div class="text-right m-t-xs">
-        <%= f.hidden_field :user_id, value: @teacher.user %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
         <%= link_to 'Volver', teachers_path, class: 'btn btn-danger' %>
         <%= f.submit "#{action} Profesor", class: 'btn btn-success' %>
       </div>

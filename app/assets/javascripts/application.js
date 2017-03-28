@@ -14,3 +14,20 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+jQuery(function() {
+  var cities;
+  cities = $('#teacher_city_id').html();
+  console.log(cities);
+  return $('#teacher_country_id').change(function() {
+    var country, options;
+    country = $('#teacher_country_id :selected').text();
+    options = $(cities).filter("optgroup[label=" + country + "]").html();
+    console.log(options);
+    if (options) {
+      return $('#teacher_city_id').html(options);
+    } else {
+      return $('#teacher_city_id').empty();
+    }
+  });
+});
