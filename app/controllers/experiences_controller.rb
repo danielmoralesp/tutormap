@@ -19,6 +19,25 @@ class ExperiencesController < ApplicationController
     end
   end
 
+  def edit
+    @experience = Experience.find(params[:id])
+    @teacher = @experience.teacher_id
+  end
+
+  def update
+    @experience = Experience.find(params[:id])
+
+    if @experience.update(experience_params)
+      flash[:notice] = 'La experiencia ha sido actualizado con éxito'
+      redirect_to teachers_path
+    else
+      flash[:alert] = 'Algo fallo, el profesor no ha sido actualizado con éxito'
+      render edit_experience_path
+    end
+  end
+
+
+
 
 
 
