@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328151303) do
+ActiveRecord::Schema.define(version: 20170329152614) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20170328151303) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "teacher_id"
+    t.string   "ano_inicio"
+    t.string   "ano_fin"
   end
 
   add_index "experiences", ["teacher_id"], name: "index_experiences_on_teacher_id"

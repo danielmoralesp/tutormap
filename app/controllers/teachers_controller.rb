@@ -29,7 +29,7 @@ class TeachersController < ApplicationController
 
     if @teacher.save
       flash[:notice] = 'El profesor ha sido creado con éxito'
-      redirect_to teachers_path
+      redirect_to new_experience_path
     else
       flash[:alert] = 'Algo fallo, el profesor no ha sido creado con éxito'
       render :new
