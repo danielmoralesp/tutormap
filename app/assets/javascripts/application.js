@@ -65,3 +65,20 @@ jQuery(function() {
     }
   });
 });
+
+jQuery(function() {
+  var topics;
+  topics = $('#service_topic_id').html();
+  console.log(topics);
+  return $('#service_subject_id').change(function() {
+    var subject, options;
+    subject = $('#service_subject_id :selected').text();
+    options = $(topics).filter("optgroup[label=" + subject + "]").html();
+    console.log(options);
+    if (options) {
+      return $('#service_topic_id').html(options);
+    } else {
+      return $('#service_topic_id').empty();
+    }
+  });
+});

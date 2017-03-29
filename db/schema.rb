@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329152614) do
+ActiveRecord::Schema.define(version: 20170329225141) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170329152614) do
   add_index "experiences", ["teacher_id"], name: "index_experiences_on_teacher_id"
 
   create_table "services", force: :cascade do |t|
-    t.integer  "type"
+    t.integer  "type_tutoring"
     t.integer  "academ_level"
     t.integer  "price_per_hour"
     t.integer  "min_hours"
@@ -56,8 +56,10 @@ ActiveRecord::Schema.define(version: 20170329152614) do
     t.datetime "updated_at",       null: false
     t.integer  "teacher_id"
     t.integer  "topic_id"
+    t.integer  "subject_id"
   end
 
+  add_index "services", ["subject_id"], name: "index_services_on_subject_id"
   add_index "services", ["teacher_id"], name: "index_services_on_teacher_id"
   add_index "services", ["topic_id"], name: "index_services_on_topic_id"
 

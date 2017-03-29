@@ -12,7 +12,7 @@ class ExperiencesController < ApplicationController
 
     if @experience.save
       flash[:notice] = 'La experiencia ha sido creada con éxito'
-      redirect_to teachers_path
+      redirect_to new_service_path
     else
       flash[:alert] = 'Algo fallo, el profesor no ha sido creado con éxito'
       render new_experience_path

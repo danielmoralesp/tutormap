@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :admins, only: [:index, :show]
   resources :experiences, except: [:index, :show]
+  resources :services, except: [:index, :show]
 
   get 'landing', to: 'teachers#landing', as: 'teachers_landing'
 
