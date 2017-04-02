@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329225141) do
+ActiveRecord::Schema.define(version: 20170402134853) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -88,6 +88,21 @@ ActiveRecord::Schema.define(version: 20170329225141) do
   add_index "teachers", ["city_id"], name: "index_teachers_on_city_id"
   add_index "teachers", ["country_id"], name: "index_teachers_on_country_id"
   add_index "teachers", ["user_id"], name: "index_teachers_on_user_id"
+
+  create_table "tests", force: :cascade do |t|
+    t.text     "questions"
+    t.text     "answers"
+    t.integer  "result"
+    t.integer  "subject_id"
+    t.integer  "topic_id"
+    t.integer  "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tests", ["subject_id"], name: "index_tests_on_subject_id"
+  add_index "tests", ["teacher_id"], name: "index_tests_on_teacher_id"
+  add_index "tests", ["topic_id"], name: "index_tests_on_topic_id"
 
   create_table "topics", force: :cascade do |t|
     t.string   "name"

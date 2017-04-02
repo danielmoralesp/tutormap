@@ -7,6 +7,7 @@ class Teacher < ActiveRecord::Base
   has_many :users, through: :tutorings
   has_many :experiences
   has_many :services
+  has_many :tests
 
   validates :phone, :address, :about_me, presence: true
   validates :about_me, length: { in: 50...500 }

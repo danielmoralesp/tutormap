@@ -82,3 +82,20 @@ jQuery(function() {
     }
   });
 });
+
+jQuery(function() {
+  var topics;
+  topics = $('#test_topic_id').html();
+  console.log(topics);
+  return $('#test_subject_id').change(function() {
+    var subject, options;
+    subject = $('#test_subject_id :selected').text();
+    options = $(topics).filter("optgroup[label=" + subject + "]").html();
+    console.log(options);
+    if (options) {
+      return $('#test_topic_id').html(options);
+    } else {
+      return $('#test_topic_id').empty();
+    }
+  });
+});
